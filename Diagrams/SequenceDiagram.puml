@@ -1,0 +1,40 @@
+@startuml
+actor Користувач as User
+participant MainPage
+participant XmlDocumentService as Service
+participant IXmlParsingStrategy as Strategy
+participant XmlSearchService as Search
+participant "XML-файл" as XML
+participant "XSLT" as XSL
+
+User -> MainPage : Відкрити XML
+MainPage -> XML : Вибір локального файлу
+MainPage -> Service : GetAttributeNames(path, "Event")
+Service -> XML : Завантажити XML
+Service --> MainPage : Список атрибутів
+MainPage -> User : Показати атрибути та значення
+
+User -> MainPage : Обрати метод і критерії пошуку
+MainPage -> Service : Parse(path, "Event", method)
+Service -> Strategy : Parse(path, "Event")
+Strategy -> XML : Прочитати XML
+XML --> Strategy : Вміст документа
+Strategy --> Service : Список EventRecord
+Service --> MainPage : Записи
+MainPage -> Search : Search(records, attribute, value, keyword)
+Search --> MainPage : Відібрані записи
+MainPage -> User : Відобразити результати
+
+opt Збереження XML
+  User -> MainPage : Зберегти XML
+  MainPage -> Service : SaveFilteredXml(records, path)
+  Service --> User : Файл XML
+end
+opt Експорт HTML
+  User -> MainPage : Експортувати HTML
+  MainPage -> Service : TransformToHtml(xml, xsl, html)
+  Service -> XSL : Застосувати XSLT
+  XSL --> Service : HTML
+  Service --> User : Файл HTML
+end
+@enduml

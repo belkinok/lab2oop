@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab2_DayOfFaculty.MainPage"
+             Title="День факультету — XML" 
+             BackgroundColor="#0F172A">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Файл">
+            <MenuFlyoutItem Text="Відкрити XML…" Clicked="OnOpenXmlClicked" />
+            <MenuFlyoutItem Text="Зберегти результати як XML…" Clicked="OnSaveXmlClicked" />
+            <MenuFlyoutItem Text="Експортувати HTML…" Clicked="OnExportHtmlClicked" />
+            <MenuFlyoutSeparator />
+            <MenuFlyoutItem Text="Вихід" Clicked="OnExitClicked" />
+        </MenuBarItem>
+        <MenuBarItem Text="Довідка">
+            <MenuFlyoutItem Text="Про програму" Clicked="OnAboutClicked" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="14">
+            <Label Text="ДЕНЬ ФАКУЛЬТЕТУ" FontSize="26" FontAttributes="Bold" TextColor="#38BDF8" />
+            <Label Text="Перегляд, пошук та трансформація XML-документів" FontSize="14" TextColor="#94A3B8" />
+
+            <Border BackgroundColor="#1E293B" Stroke="#334155" StrokeThickness="1" Padding="14" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Файл даних" FontAttributes="Bold" FontSize="17" TextColor="#F1F5F9" />
+                    <Label x:Name="FileNameLabel" Text="Завантажено демонстраційний файл FacultyDay.xml" LineBreakMode="MiddleTruncation" TextColor="#CBD5E1" />
+                    <Button Text="Відкрити XML-файл" Clicked="OnOpenXmlClicked" BackgroundColor="#2563EB" TextColor="#FFFFFF" FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border BackgroundColor="#1E293B" Stroke="#334155" StrokeThickness="1" Padding="14" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Параметри аналізу" FontAttributes="Bold" FontSize="17" TextColor="#F1F5F9" />
+                    <Label Text="Спосіб аналізу XML" TextColor="#CBD5E1" />
+                    <Picker x:Name="StrategyPicker" Title="Оберіть спосіб аналізу" BackgroundColor="#0F172A" TextColor="#F1F5F9" TitleColor="#64748B" />
+                    <Label Text="Атрибут для пошуку (підвантажується з XML)" TextColor="#CBD5E1" />
+                    <Picker x:Name="AttributePicker" Title="Оберіть атрибут" SelectedIndexChanged="OnAttributeChanged" BackgroundColor="#0F172A" TextColor="#F1F5F9" TitleColor="#64748B" />
+                    <Label Text="Значення атрибута" TextColor="#CBD5E1" />
+                    <Picker x:Name="ValuePicker" Title="Оберіть значення" BackgroundColor="#0F172A" TextColor="#F1F5F9" TitleColor="#64748B" />
+                    <Label Text="Ключове слово (необов’язково)" TextColor="#CBD5E1" />
+                    <Entry x:Name="KeywordEntry" Placeholder="Наприклад, конференція або аудиторія" BackgroundColor="#0F172A" TextColor="#F1F5F9" PlaceholderColor="#64748B" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                        <Button Grid.Column="0" Text="Знайти" Clicked="OnSearchClicked" BackgroundColor="#2563EB" TextColor="#FFFFFF" FontAttributes="Bold" />
+                        <Button Grid.Column="1" Text="Clear" Clicked="OnClearClicked" BackgroundColor="#334155" TextColor="#E2E8F0" />
+                        <Button Grid.Column="2" Text="Усі записи" Clicked="OnShowAllClicked" BackgroundColor="#334155" TextColor="#E2E8F0" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Результати" FontSize="18" FontAttributes="Bold" TextColor="#F1F5F9" VerticalOptions="Center" />
+                <Label x:Name="CountLabel" Grid.Column="1" Text="0 записів" TextColor="#94A3B8" VerticalOptions="Center" />
+            </Grid>
+            <VerticalStackLayout x:Name="ResultsLayout" Spacing="8" />
+
+            <Border BackgroundColor="#1E293B" Stroke="#334155" StrokeThickness="1" Padding="14" StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Експорт та інформація" FontAttributes="Bold" FontSize="17" TextColor="#F1F5F9" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Button Text="Зберегти XML" Clicked="OnSaveXmlClicked" BackgroundColor="#0284C7" TextColor="#FFFFFF" FontAttributes="Bold" />
+                        <Button Grid.Column="1" Text="Створити HTML" Clicked="OnExportHtmlClicked" BackgroundColor="#0284C7" TextColor="#FFFFFF" FontAttributes="Bold" />
+                    </Grid>
+                    <Button Text="Про програму" Clicked="OnAboutClicked" BackgroundColor="#334155" TextColor="#E2E8F0" />
+                    <Button Text="Вихід" Clicked="OnExitClicked" BackgroundColor="#450A0A" TextColor="#FCA5A5" BorderColor="#7F1D1D" BorderWidth="1" />
+                </VerticalStackLayout>
+            </Border>
+            <Label x:Name="StatusLabel" Text="Готово до роботи." FontSize="12" TextColor="#94A3B8" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

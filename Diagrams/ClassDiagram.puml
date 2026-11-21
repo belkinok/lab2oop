@@ -1,0 +1,47 @@
+@startuml
+skinparam classAttributeIconSize 0
+class MainPage {
+  - XmlDocumentService _documentService
+  - XmlSearchService _searchService
+  - string _xmlPath
+  - IReadOnlyList<EventRecord> _allRecords
+  - IReadOnlyList<EventRecord> _visibleRecords
+  + LoadDocumentAsync(path)
+  + OnSearchClicked()
+  + OnSaveXmlClicked()
+  + OnExportHtmlClicked()
+}
+class EventRecord {
+  + string ElementName
+  + Dictionary<string,string> Attributes
+  + Dictionary<string,string> Fields
+  + GetValue(name) : string
+  + DisplayText : string
+}
+interface IXmlParsingStrategy {
+  + Name : string
+  + Parse(xmlPath, recordElement) : IReadOnlyList<EventRecord>
+}
+class SaxParsingStrategy
+class DomParsingStrategy
+class LinqParsingStrategy
+class XmlDocumentService {
+  - List<IXmlParsingStrategy> _strategies
+  + Parse(path, recordElement, strategyName)
+  + GetAttributeNames(path, recordElement)
+  + GetAttributeValues(path, recordElement, attributeName)
+  + SaveFilteredXml(records, path, rootName, recordName)
+  + TransformToHtml(xmlPath, xslPath, htmlPath)
+}
+class XmlSearchService {
+  + Search(records, attributeName, attributeValue, keyword)
+}
+MainPage --> XmlDocumentService
+MainPage --> XmlSearchService
+XmlDocumentService o-- IXmlParsingStrategy
+IXmlParsingStrategy <|.. SaxParsingStrategy
+IXmlParsingStrategy <|.. DomParsingStrategy
+IXmlParsingStrategy <|.. LinqParsingStrategy
+IXmlParsingStrategy ..> EventRecord
+XmlSearchService ..> EventRecord
+@enduml

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FacultyDay faculty="Факультет комп’ютерних наук та кібернетики" year="2026">
+  <Event id="001" category="Освітній" status="Заплановано">
+    <Name>Відкриття Дня факультету</Name>
+    <Description>Урочисте відкриття та привітання студентів і викладачів.</Description>
+    <Responsible>Роман Бєлянушкін</Responsible>
+    <Faculty>Факультет комп’ютерних наук та кібернетики</Faculty>
+    <Department>Кафедра інформатики</Department>
+    <Position>Координатор заходу</Position>
+    <Tasks>Підготувати сценарій; узгодити виступи; перевірити обладнання.</Tasks>
+    <PreparationDeadline>2026-11-25</PreparationDeadline>
+    <StartTime>10:00</StartTime>
+    <Location>Актова зала</Location>
+    <Characteristics>Урочистий формат, відкритий для всіх студентів факультету.</Characteristics>
+  </Event>
+  <Event id="002" category="Науковий">
+    <Name>Студентська наукова конференція</Name>
+    <Description>Презентація студентських досліджень у сфері комп’ютерних наук.</Description>
+    <Responsible>Дарія Потапенко</Responsible>
+    <Faculty>Факультет комп’ютерних наук та кібернетики</Faculty>
+    <Department>Кафедра інформатики</Department>
+    <Position>Відповідальна за наукову програму</Position>
+    <Tasks>Зібрати тези; сформувати програму; запросити рецензентів.</Tasks>
+    <PreparationDeadline>2026-11-27</PreparationDeadline>
+    <StartTime>11:30</StartTime>
+    <Location>Аудиторія 101</Location>
+    <Characteristics>Доповіді тривалістю до десяти хвилин.</Characteristics>
+  </Event>
+  <Event id="003" category="Культурний" status="Підготовка" audience="Студенти">
+    <Name>Інтелектуальна вікторина</Name>
+    <Description>Командна вікторина з математики.</Description>
+    <Responsible>Софія Коханенко</Responsible>
+    <Faculty>Факультет комп’ютерних наук та кібернетики</Faculty>
+    <Department>Студентська рада факультету</Department>
+    <Position>Голова організаційного комітету</Position>
+    <Tasks>Підготувати питання, зареєструвати команди, організувати призи.</Tasks>
+    <PreparationDeadline>2026-11-28</PreparationDeadline>
+    <StartTime>13:00</StartTime>
+    <Location>Аудиторія 002</Location>
+    <Characteristics>Команди по три або чотири учасники.</Characteristics>
+  </Event>
+  <Event id="004" category="Спортивний" status="Заплановано" audience="Усі охочі" indoor="false">
+    <Name>Товариський турнір</Name>
+    <Description>Спортивні змагання між студентськими командами.</Description>
+    <Responsible>Максим Грушовий</Responsible>
+    <Faculty>Факультет комп’ютерних наук та кібернетики</Faculty>
+    <Department>Кафедра прикладної математики</Department>
+    <Position>Організатор спортивної частини</Position>
+    <Tasks>Забронювати майданчик; скласти сітку; підготувати інвентар.</Tasks>
+    <PreparationDeadline>2026-11-29</PreparationDeadline>
+    <StartTime>14:30</StartTime>
+    <Location>Спортивний майданчик</Location>
+    <Characteristics>Формат змагань визначається кількістю команд.</Characteristics>
+  </Event>
+</FacultyDay>

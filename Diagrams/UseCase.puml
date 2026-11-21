@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+actor "Користувач" as User
+rectangle "Застосунок «День факультету — XML»" {
+  usecase "Відкрити XML-файл" as UC1
+  usecase "Завантажити атрибути\nта їх значення" as UC2
+  usecase "Обрати метод аналізу" as UC3
+  usecase "Виконати пошук\nза атрибутом і ключовим словом" as UC4
+  usecase "Переглянути результати" as UC5
+  usecase "Очистити параметри\nта результати" as UC6
+  usecase "Зберегти відібрані\nзаписи у XML" as UC7
+  usecase "Трансформувати XML\nу HTML за XSLT" as UC8
+  usecase "Переглянути інформацію\nпро програму" as UC9
+  usecase "Підтвердити вихід" as UC10
+}
+User --> UC1
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+User --> UC9
+User --> UC10
+UC1 .> UC2 : <<include>>
+UC4 .> UC3 : <<include>>
+UC4 .> UC5 : <<include>>
+UC7 .> UC5 : <<extend>>
+UC8 .> UC5 : <<extend>>
+@enduml
